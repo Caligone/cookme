@@ -53,7 +53,9 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
-
+.classpath
+.project
+build/
 
 *~
 
