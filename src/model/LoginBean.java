@@ -7,7 +7,8 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class LoginBean implements Serializable{
+public class LoginBean implements Serializable
+{
 	private String login;
 	private String pwd;
 	
