@@ -45,3 +45,8 @@ h1 {
 	text-decoration: none;
 	box-shadow: 1px 1px 12px #444;
 }
+
+footer {
+	padding-top: 30px;
+	text-align: center;
+}
