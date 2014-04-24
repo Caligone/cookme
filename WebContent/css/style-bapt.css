@@ -10,7 +10,9 @@
 	height: 100%;
 }
 
-.layout header.recipes { background-color: #428bca; }
+.layout header.recipes {
+	background-color: #428bca;
+}
 
 .layout header div.sign-in {
 	margin: 0 20px;
