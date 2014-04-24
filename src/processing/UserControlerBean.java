@@ -1,6 +1,7 @@
 package processing;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -14,7 +15,7 @@ import dao.instance.UserDao;
 import model.UserSubmissionModelBean;
 
 @ManagedBean
-@ApplicationScoped // Utilisation de application scope afin d'offrir un point d'entr�e unique � l'ensemble des clients
+@ApplicationScoped
 public class UserControlerBean {
 	private UserDao userDao;
 	
@@ -24,7 +25,7 @@ public class UserControlerBean {
 	
 	public String checkUser(LoginBean loginBean){
 		UserModelBean user = this.userDao.checkUser(loginBean.getLogin(), loginBean.getPwd());
-		if( user!=null){
+		if(user != null){
 			
 			//r�cup�re l'espace de m�moire de JSF
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -42,13 +43,11 @@ public class UserControlerBean {
 		}
 	}
 	
-	public void checkAndAddUser(UserSubmissionModelBean userSubmitted){
-		
-		//V�rifier les propri�t�s de l'utilisateur
-		//TODO
-		
-		//ajout de l'utilisateur � la base de donn�es
-		this.userDao.addUser(userSubmitted);
+	public String checkAndAddUser(UserSubmissionModelBean userSubmitted){
+
+        this.userDao.addUser(userSubmitted);
+
+        return "menu.html";
 	}
 
 }

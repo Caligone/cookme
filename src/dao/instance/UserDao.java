@@ -36,13 +36,15 @@ public class UserDao {
 			query = connection.createStatement();
 
 			// Executer puis parcourir les r�sultats
-			String sql = "INSERT INTO `binome32`.`UserTestTP` (`surname`, `lastname`, `age`, `login`, `pwd`) VALUES ('"
-					+ user.getSurname()
+			String sql = "INSERT INTO `User` (`firstname`, `lastname`, `age`, `email`, `login`, `pwd`) VALUES ('"
+					+ user.getFirstname()
 					+ "', '"
 					+ user.getLastname()
 					+ "', '"
-					+ user.getAge()
-					+ "', '"
+                    + user.getAge()
+                    + "', '"
+                    + user.getEmail()
+                    + "', '"
 					+ user.getLogin()
 					+ "', '"
 					+ user.getPwd() + "');";
@@ -71,11 +73,11 @@ public class UserDao {
 
 			// Executer puis parcourir les r�sultats
 			java.sql.ResultSet rs = query
-					.executeQuery("SELECT * FROM UserTestTP");
+					.executeQuery("SELECT * FROM User");
 			while (rs.next()) {
 				// Cr�ation de l'utilisateur
 				UserModelBean user = new UserModelBean(
-						rs.getString("lastname"), rs.getString("surname"),
+						rs.getString("lastname"), rs.getString("firstname"), rs.getString("email"),
 						rs.getInt("age"), rs.getString("login"),
 						rs.getString("pwd"));
 				System.out.println("User : " + user);
@@ -107,7 +109,7 @@ public class UserDao {
 
 			// Executer puis parcourir les r�sultats
 			java.sql.ResultSet rs = query
-					.executeQuery("SELECT * FROM UserTestTP where login='"
+					.executeQuery("SELECT * FROM User where login='"
 							+ login + "' and pwd='" + pwd + "';");
 
 			if (!rs.next()) {
@@ -115,7 +117,7 @@ public class UserDao {
 			} else {
 				// Cr�ation de l'utilisateur
 				UserModelBean user = new UserModelBean(
-				rs.getString("lastname"), rs.getString("surname"),
+				rs.getString("lastname"), rs.getString("firstname"), rs.getString("email"),
 				rs.getInt("age"), rs.getString("login"),
 				rs.getString("pwd"));
 				System.out.println("User Login : " + user);

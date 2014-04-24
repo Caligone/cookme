@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h:form>
+        <label>Lastname</label>
+        <h:inputText name="lastname" value="#{userSubmissionModelBean.lastname}" required="true">
+        <f:validator validatorId="validators.name" /><br/>
+        <h:message for="lastname" showDetail="true" style="color:red" />
+        </h:inputText><br/>
+
+        <label>Firstname</label><h:inputText name="firstname" value="#{userSubmissionModelBean.firstname}" required="true">
+        <f:validator validatorId="validators.name" /><br/>
+        <h:message for="firstname" showDetail="true" style="color:red" /><br/>
+        </h:inputText><br/>
+
+        <label>Email</label><h:inputText name="email" value="#{userSubmissionModelBean.email}" required="true">
+        <f:validator validatorId="validators.email" /><br/>
+        <h:message for="email" showDetail="true" style="color:red" /><br/>
+        </h:inputText><br/>
+
+        <label>Age</label><h:inputText name="age" value="#{userSubmissionModelBean.age}" required="true">
+        <f:validateLength minimum="0" maximum="100"/><br/>
+        <h:message for="age" showDetail="true" style="color:red" /><br/>
+        </h:inputText><br/>
+
+        <label>Login</label><h:inputText name="login" value="#{userSubmissionModelBean.login}" required="true">
+        <f:validator validatorId="validators.login" /><br/>
+        <h:message for="login" showDetail="true" style="color:red" /><br/>
+        </h:inputText><br/>
+
+        <label>Pwd</label><h:inputSecret name="pwd" value="#{userSubmissionModelBean.pwd}" required="true">
+        <f:validator validatorId="validators.pwd" />
+        <f:attribute name="pwd2" value="#{pwd2}" />
+        <h:message for="pwd" showDetail="true" style="color:red" />
+        </h:inputSecret><br/>
+        <label>Pwd</label><h:inputSecret name="pwd2" binding="#{pwd2}" value="#{userSubmissionModelBean.pwd2}"></h:inputSecret>
+        <h:commandButton value="Register" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}" />
+    </h:form>
+</body>
+</html>
