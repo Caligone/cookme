@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 	<head>
 	    <title>CookMe</title>
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link href="css/bootstrap.min.css" rel="stylesheet">
-	    <link href="css/style.css" rel="stylesheet">
+	    <meta charset="utf-8"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/style.css" rel="stylesheet"/>
 	    <!--[if lt IE 9]>
 	    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -16,7 +18,7 @@
 		<div class="jumbotron">
 		    <h1 class="big-title">CookMe <span class="glyphicon glyphicon-glass"></span></h1>
 		    <p class="text-center">
-		    	<a class="btn btn-lg btn-success" href="menu.html" role="button">Cook today</a>
+		    	<h:outputLink class="btn btn-lg btn-success" value="menu.xhtml" role="button">Cook today</h:outputLink>
 	    	</p>
 		</div>
 		<script src="js/jquery.min.js"></script>

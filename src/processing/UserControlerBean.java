@@ -47,7 +47,7 @@ public class UserControlerBean {
 
         this.userDao.addUser(userSubmitted);
 
-        return "menu.html";
+        return "menu";
 	}
 
 }
