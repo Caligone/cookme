@@ -35,7 +35,7 @@ public class RecipesDao {
 			query = connection.createStatement();
 
 			// Executer puis parcourir les r�sultats
-			String sql = "INSERT INTO `binome32`.`RecipeTestTP` (`title`, `description`, `expertise`, `duration`, `nbpeople`,`type`) VALUES ('"
+			String sql = "INSERT INTO `Recipe` (`title`, `description`, `expertise`, `duration`, `nbpeople`,`type`) VALUES ('"
 					+ recipe.getTitle()
 					+ "', '"
 					+ recipe.getDescription()
@@ -71,7 +71,7 @@ public class RecipesDao {
 
 			// Executer puis parcourir les r�sultats
 			java.sql.ResultSet rs = query
-					.executeQuery("SELECT * FROM RecipeTestTP;");
+					.executeQuery("SELECT * FROM Recipe;");
 			while (rs.next()) {
 				// Cr�ation de  la recette
 				RecipeModel recipe = new RecipeModel(

@@ -10,7 +10,8 @@ import javax.faces.bean.SessionScoped;
 //contrainte BEAN implements Serializable
 public class UserModelBean implements Serializable{
 	private String lastname;
-	private String surname;
+    private String firstname;
+    private String email;
 	private int age;
 	private String login;
 	private String pwd;
@@ -19,9 +20,10 @@ public class UserModelBean implements Serializable{
 	public UserModelBean() {
 	}
 	
-	public UserModelBean(String lastname,String surname,int age,String login,String pwd) {
+	public UserModelBean(String lastname,String firstname, String email, int age,String login,String pwd) {
 		this.lastname = lastname;
-		this.surname = surname;
+        this.firstname = firstname;
+        this.email = email;
 		this.age = age;
 		this.login = login;
 		this.pwd = pwd;
@@ -35,12 +37,12 @@ public class UserModelBean implements Serializable{
 		this.lastname = lastname;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public int getAge() {
@@ -59,18 +61,26 @@ public class UserModelBean implements Serializable{
 		this.login = login;
 	}
 
-	public String getPwd() {
-		return pwd;
-	}
+    public String getPwd() {
+        return pwd;
+    }
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 	
 	
 	@Override
 	public String toString() {
-		return "[SURNAME]:"+this.getSurname()+",[LASTNAME]:"+this.getLastname()+",[AGE]:"+this.getAge()+",[LOGIN]:"+this.getLogin()+",[PWD]:"+this.getPwd();
+		return "[FIRSTNAME]:"+this.getFirstname()+",[LASTNAME]:"+this.getLastname()+",[EMAIL]:"+this.getEmail()+",[AGE]:"+this.getAge()+",[LOGIN]:"+this.getLogin()+",[PWD]:"+this.getPwd();
 	}
 	
 
