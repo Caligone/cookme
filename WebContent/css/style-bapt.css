@@ -1,0 +1,37 @@
+.layout header {
+	position: relative;
+	padding: 10px 0;
+	min-height: 110px;
+	font-weight: bold;
+}
+
+.layout header div {
+	float: left;
+	height: 100%;
+}
+
+.layout header.recipes { background-color: #428bca; }
+
+.layout header div.sign-in {
+	margin: 0 20px;
+}
+
+.layout header div.sign-in > input {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.layout .main {
+	min-height: 500px;
+}
+
+.layout header > div:first-child {
+	color: #fff;
+	font-size: 25px;
+	-moz-transform: rotate(-25deg);
+	-webkit-transform: rotate(-25deg);
+	-o-transform: rotate(-25deg);
+	position: absolute;
+	left: 40px;
+	top: 30px;
+}
