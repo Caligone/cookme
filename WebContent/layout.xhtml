@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<h:head>
+	    <title>
+	    	<ui:insert name="title">DEFAULT TITLE HERE</ui:insert>
+		</title>
+	    <meta charset="utf-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	    <link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/style-bapt.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</h:head>
+	<h:body>
+		<div class="container layout">
+			<header class="#{activity_class}">
+				<div>
+					<ui:insert name="activity">
+						ACTIVITY NAME
+					</ui:insert>
+				</div>
+				<div class="pull-right">
+					<div class="register">
+						Become a member
+						<button class="glyphicon glyphicon-user" value="ok"/>
+					</div>
+					<div class="sign-in">
+						<input type="text"/>
+						<input type="password"/>
+						<input type="submit"/>
+					</div>
+				</div>
+			</header>
+			<div class="main">
+				<ui:insert name="main">
+					Custom Section
+				</ui:insert>
+			</div>
+			<footer>
+				Caligone et Ovski Copyright - Tous droits réservés
+				<span class="glyphicon glyphicon-glass"></span>
+			</footer>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</h:body>
+</html>
