@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,10 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class RecipeListModelBean {
+public class RecipeListModelBean implements Serializable {
 	private List<RecipeModel> recipeList;
-	
+	private RecipeModel selectedRecipe;
+
 	public RecipeListModelBean() {
 		recipeList=new ArrayList<RecipeModel>();
 	}
@@ -22,5 +24,13 @@ public class RecipeListModelBean {
 	public List<RecipeModel> getRecipeList() {
 		return recipeList;
 	}
+
+    public RecipeModel getSelectedRecipe() {
+        return this.selectedRecipe;
+    }
+
+    public void setSelectedRecipe(RecipeModel selectedRecipe) {
+        this.selectedRecipe = selectedRecipe;
+    }
 
 }

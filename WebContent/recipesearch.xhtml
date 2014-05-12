@@ -1,34 +1,62 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-<head>
-<title>Search recipes</title>
-</head>
-<body>
-	<h1>Search</h1>
-	<table>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Expertise</th>
-            <th>NbPeople</th>
-            <th>Duration</th>
-            <th>Type</th>
-        </tr>
-        <ui:repeat var="r" value="#{session.getAttribute('recipeList').getRecipeList()}">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-            <tr>
-                <td>#{r.title}</td>
-                <td>#{r.description}</td>
-                <td>#{r.expertise}</td>
-                <td>#{r.nbpeople}</td>
-                <td>#{r.duration}</td>
-                <td>#{r.type}</td>
-            </tr>
+<h:head>
+</h:head>
+<h:body>
+    <h1>Advanced List of Users</h1>
+    <h:form id="form">
+        <p:dataGrid var="recipe" value="#{session.getAttribute('recipeList').getRecipeList()}" columns="3"
+                    rows="12" paginator="true"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="9,12,15">
 
-        </ui:repeat>
-	</table>
-</body>
+            <p:panel header="#{recipe.title}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:100%">
+
+                    <h:outputText value="#{recipe.description}" />
+
+                    <p:commandLink update=":form:recipeDetail" oncomplete="PF('recipeDialog').show()" title="View Detail">
+                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                        <f:setPropertyActionListener value="#{recipe}" target="#{session.getAttribute('recipeList').selectedRecipe}" />
+                    </p:commandLink>
+                </h:panelGrid>
+            </p:panel>
+
+        </p:dataGrid>
+
+        <p:dialog header="Recipe Detail" widgetVar="recipeDialog" modal="true">
+            <p:outputPanel id="recipeDetail" style="text-align:center;" layout="block">
+
+                <h:panelGrid  columns="2" cellpadding="5">
+                    <h:outputLabel for="title" value="Title: " />
+                    <h:outputText id="title" value="#{session.getAttribute('recipeList').selectedRecipe.title}" />
+
+                    <h:outputLabel for="description" value="Description: " />
+                    <h:outputText id="description" value="#{session.getAttribute('recipeList').selectedRecipe.description}" />
+
+                    <h:outputLabel for="xp" value="Expertise: " />
+                    <h:outputText id="xp" value="#{session.getAttribute('recipeList').selectedRecipe.expertise}" />
+
+                    <h:outputLabel for="nbpeople" value="Nb. People: " />
+                    <h:outputText id="nbpeople" value="#{session.getAttribute('recipeList').selectedRecipe.nbpeople}" />
+
+                    <h:outputLabel for="duration" value="Duration: " />
+                    <h:outputText id="duration" value="#{session.getAttribute('recipeList').selectedRecipe.duration}" />
+
+                    <h:outputLabel for="type" value="Type: " />
+                    <h:outputText id="type" value="#{session.getAttribute('recipeList').selectedRecipe.type}" />
+                </h:panelGrid>
+
+            </p:outputPanel>
+        </p:dialog>
+
+    </h:form>
+</h:body>
 </html>

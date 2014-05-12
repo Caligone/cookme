@@ -147,26 +147,27 @@ public class RecipesDao {
             query = connection.createStatement();
             String where = " WHERE ";
             boolean whereB = false;
-            if(recipeFilterBean.getDuration() != null && recipeFilterBean.getDuration() != "") {
+            if(recipeFilterBean.getDuration() != null && !recipeFilterBean.getDuration().equals("")) {
                 where = where.concat("duration <= "+Integer.parseInt(recipeFilterBean.getDuration()));
                 whereB = true;
             }
-            if(recipeFilterBean.getPeople() != null && recipeFilterBean.getPeople() != "") {
+            if(recipeFilterBean.getPeople() != null && !recipeFilterBean.getPeople().equals("")) {
                 where = where.concat("nbpeople >= "+Integer.parseInt(recipeFilterBean.getPeople()));
                 whereB = true;
             }
-            if(recipeFilterBean.getXp() != null && recipeFilterBean.getXp() != "") {
+            if(recipeFilterBean.getXp() != null && !recipeFilterBean.getXp().equals("")) {
                 where = where.concat("expertise <= "+Integer.parseInt(recipeFilterBean.getXp()));
                 whereB = true;
             }
-            if(recipeFilterBean.getType() != null && recipeFilterBean.getType() != "all") {
+            if(recipeFilterBean.getType() != null && !recipeFilterBean.getType().equals("all")) {
                 where = where.concat("type = '"+recipeFilterBean.getType()+"'");
                 whereB = true;
             }
             if(!whereB) {
                 where = "";
             }
-
+            boolean x = recipeFilterBean.getType() != "all";
+            System.out.println("X = "+x+"\n "+recipeFilterBean.getType());
             // Executer puis parcourir les r�sultats
             java.sql.ResultSet rs = query.executeQuery("SELECT * FROM Recipe"+where);
             while (rs.next()) {

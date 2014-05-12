@@ -54,8 +54,8 @@ public class RecipeFilterBean implements Serializable
     static {
         RecipeFilterBean.types = new HashMap<String,Object>();
         DaoFabric fabric = DaoFabric.getInstance();
-        types.put("all", "all");
         types.putAll(fabric.createRecipesDao().getAllTypes());
+        types.put("all", "all");
     }
 
 	public RecipeFilterBean() {
