@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<h:head>
 	    <title>
 	    	<ui:insert name="title">DEFAULT TITLE HERE</ui:insert>
@@ -21,15 +22,29 @@
 						ACTIVITY NAME
 					</ui:insert>
 				</div>
+				<div>
+					<a class="top-link" href="menu.jsf">Go back to the menu</a>
+				</div>
+				<div class="register">
+					<span class="glyphicon glyphicon-user"></span><a href="register.jsf">Become a member</a>
+				</div>
 				<div class="pull-right">
-					<div class="register">
-						Become a member
-						<button class="glyphicon glyphicon-user" value="ok"/>
-					</div>
 					<div class="sign-in">
-						<input type="text"/>
-						<input type="password"/>
-						<input type="submit"/>
+						<c:choose>
+						  <c:when test="#{!userControlerBean.isConnected()}">
+						    <h:form>
+								<div><label>Pseudo</label><h:inputText id="userlogin" value="#{loginBean.login}" required="true" /></div>
+								<div><label>Password</label><h:inputSecret value="#{loginBean.pwd}"/></div>
+								<div><h:commandButton value="Log in"  action="#{userControlerBean.checkUser(loginBean)}" /></div>
+							</h:form>
+						  </c:when>
+						  <c:otherwise>
+						  	  Welcome #{session.getAttribute('loggedUser').getLogin()}
+						  	  <h:form>
+						  	  	<h:commandButton value="Log out"  action="#{userControlerBean.logout()}" />
+						  	  </h:form>
+						  </c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</header>

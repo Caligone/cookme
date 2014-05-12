@@ -1,12 +1,12 @@
 package processing;
 
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import model.LoginBean;
 import model.UserModelBean;
@@ -18,28 +18,37 @@ import model.UserSubmissionModelBean;
 @ApplicationScoped
 public class UserControlerBean {
 	private UserDao userDao;
-	
+
 	public UserControlerBean() {
 		this.userDao=DaoFabric.getInstance().createUserDao();
 	}
-	
-	public String checkUser(LoginBean loginBean){
+
+	public String checkUser(LoginBean loginBean) {
 		UserModelBean user = this.userDao.checkUser(loginBean.getLogin(), loginBean.getPwd());
-		if(user != null){
-			
-			//r�cup�re l'espace de m�moire de JSF
+		if(user != null) {
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
-			
-			//place l'utilisateur dans l'espace de m�moire de JSF
 			sessionMap.put("loggedUser", user);
-			
-			//redirect the current page
-			return "userdisplay.xhtml";
-		}else{
-			
-			//redirect the current page
-			return "userLogin.xhtml";
+		}
+
+		return "menu.xhtml";
+	}
+
+	public String logout() {
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			Map<String, Object> sessionMap = externalContext.getSessionMap();
+			sessionMap.remove("loggedUser");
+
+			return "menu.xhtml";
+	}
+
+	public boolean isConnected() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		if (sessionMap.containsKey("loggedUser")) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
