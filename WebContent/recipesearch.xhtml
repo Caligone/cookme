@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Search recipes</title>
+</head>
+<body>
+	<h1>Search</h1>
+	<table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Expertise</th>
+            <th>NbPeople</th>
+            <th>Duration</th>
+            <th>Type</th>
+        </tr>
+        <ui:repeat var="r" value="#{session.getAttribute('recipeList').getRecipeList()}">
+
+            <tr>
+                <td>#{r.title}</td>
+                <td>#{r.description}</td>
+                <td>#{r.expertise}</td>
+                <td>#{r.nbpeople}</td>
+                <td>#{r.duration}</td>
+                <td>#{r.type}</td>
+            </tr>
+
+        </ui:repeat>
+	</table>
+</body>
+</html>

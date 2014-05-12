@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import model.RecipeModelBean;
 import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
+import model.RecipeFilterBean;
 import model.RecipeListModelBean;
 import model.RecipeModel;
 
@@ -25,7 +25,7 @@ public class RecipeControlerBean {
 	}
 	
 	
-	public void loadAllRecipe(){
+	public String loadAllRecipe(){
 		ArrayList<RecipeModel> list = this.recipeDao.getAllRecipes();
 		
 		RecipeListModelBean recipeList=new RecipeListModelBean();
@@ -40,7 +40,27 @@ public class RecipeControlerBean {
 		
 		//place la liste de recette dans l'espace de m�moire de JSF
 		sessionMap.put("recipeList", recipeList);
-		
+
+        return "recipesearch";
 	}
+
+    public String filterRecipe(RecipeFilterBean recipeFilterBean){
+        ArrayList<RecipeModel> list = this.recipeDao.getFilteredRecipes(recipeFilterBean);
+
+        RecipeListModelBean recipeList = new RecipeListModelBean();
+
+        for(RecipeModel recipe:list){
+            recipeList.addRecipeList(recipe);
+        }
+
+        //r�cup�re l'espace de m�moire de JSF
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+        //place la liste de recette dans l'espace de m�moire de JSF
+        sessionMap.put("recipeList", recipeList);
+
+        return "recipesearch";
+    }
 
 }

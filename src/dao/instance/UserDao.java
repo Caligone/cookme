@@ -26,15 +26,28 @@ public class UserDao {
 
 	public void addUser(UserModelBean user) {
 		// Cr�ation de la requ�te
-		java.sql.Statement query;
+		java.sql.PreparedStatement query;
 		try {
 			// create connection
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
 			// Creation de l'�l�ment de requ�te
-			query = connection.createStatement();
+            // Executer puis parcourir les r�sultats
+            String sql = "INSERT INTO User (firstname, lastname, age, email, login, pwd) VALUES(?,?,?,?,?,?)";
+            query = connection.prepareStatement(sql);
+            query.setString(1, user.getFirstname());
+            query.setString(2, user.getLastname());
+            query.setInt(3, user.getAge());
+            query.setString(4, user.getEmail());
+            query.setString(5, user.getLogin());
+            query.setString(6, user.getPwd());
+            System.out.println(sql);
+			int rs = query.executeUpdate();
+			query.close();
+			connection.close();
 
+/*
 			// Executer puis parcourir les r�sultats
 			String sql = "INSERT INTO `User` (`firstname`, `lastname`, `age`, `email`, `login`, `pwd`) VALUES ('"
 					+ user.getFirstname()
@@ -48,7 +61,15 @@ public class UserDao {
 					+ user.getLogin()
 					+ "', '"
 					+ user.getPwd() + "');";
+            query = connection.prepareStatement(sql);
+            query.setString(1, user.getFirstname());
+            query.setString(2, user.getLastname());
+            query.setInt(3, user.getAge());
+            query.setString(4, user.getEmail());
+            query.setString(5, user.getLogin());
+            query.setString(6, user.getFirstname());
 			int rs = query.executeUpdate(sql);
+			*/
 			query.close();
 			connection.close();
 		} catch (SQLException e) {
