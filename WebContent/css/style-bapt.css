@@ -4,6 +4,16 @@ body {
 
 a {
 	color: #000;
+	text-decoration: underline;
+}
+
+header a,
+header {
+	color: #fff;
+}
+
+header input {
+	color: #000;
 }
 
 a:hover {
@@ -63,7 +73,7 @@ a.top-link {
 }
 
 .layout .main {
-	min-height: 500px;
+	min-height: 460px;
 }
 
 .layout header > div:first-child {
@@ -75,4 +85,12 @@ a.top-link {
 	position: absolute;
 	left: 40px;
 	top: 30px;
+}
+
+form table td {
+	padding: 5px;
+}
+
+.main {
+	margin-left: 100px;
 }
