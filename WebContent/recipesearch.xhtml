@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
-<h:body>
-    <h1>Advanced List of Recipes</h1>
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+	template="layout.xhtml"
+>
+	<ui:define name="title">
+		CookMe - Recipies
+	</ui:define>
+	<ui:define name="activity">
+		Recipies
+	</ui:define>
+	<ui:define name="main">
+		 <h1>Advanced List of Recipes</h1>
     <h:form id="form">
         <p:dataGrid var="recipe" value="#{session.getAttribute('recipeList').getRecipeList()}" columns="3"
                     rows="12" paginator="true"
@@ -58,5 +61,9 @@
         </p:dialog>
 
     </h:form>
-</h:body>
-</html>
+	</ui:define>
+	<ui:define name="class">
+		recipies
+	</ui:define>
+	<ui:param name="activity_class" value="recipes"/>
+</ui:composition>
