@@ -16,7 +16,7 @@ La liste suivante détaille l'ensemble des éléments réalisés dans ce projet 
 
 ### Questions non-réalisées
 
-La liste suivante détaille l'ensemble des éléments qui n'ont pas pu être réalisés par manque de temps et d'interêt : 
+La liste suivante détaille l'ensemble des éléments qui n'ont pas pu être réalisés par manque de temps : 
 * Présentation d’un résultat de recherche détaillé (bug Primeface)
 * Administration
 
