@@ -6,8 +6,8 @@ Baptiste Bouchereau & Pierre-jean Leger
 
 La liste suivante détaille l'ensemble des éléments réalisés durant ce projet : 
 * Créer une première page type « Splash screen» présentation le site 
-* Créer une seconde page permettant de sélectionner l’activité choisie.
-* Créer un template d’activité précisant l’entête et footer comme suit : 
+* Créer une seconde page permettant de sélectionner l’activité choisie
+* Créer un template d’activité précisant l’entête et footer
 * Créer une page d’inscription permettant l’ajout d’un nouvel utilisateur
 * Gestion de la connexion d’un utilisateur
 * Module de recherche 
